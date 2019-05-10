@@ -1,0 +1,34 @@
+header {
+  .logo {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8rem;
+    padding: 0 3px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-self: right;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        font-family: 'Chivo', sans-serif;
+        float: left;
+        padding: 0 3px;
+
+        a {
+          padding: 1.5em;
+          text-transform: uppercase;
+          font-size: 0.8em;
+
+          &:hover {
+            background: #8e2bff;
+          }
+        }
+      }
+    }
+  }
+}

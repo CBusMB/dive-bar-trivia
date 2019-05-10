@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Chivo|Permanent+Marker');
+
+body,
+html {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-image: radial-gradient(rgb(209, 207, 207), #333);
+  font-family: 'Chivo', sans-serif;
+  font-size: 1.1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.3em;
+  display: grid;
+  grid-template-columns: 30% auto;
+
+  a {
+    color: white;
+  }
+}
