@@ -1,6 +1,8 @@
+@import '~src/foundation';
+
 header {
   .logo {
-    font-family: 'Permanent Marker', cursive;
+    font-family: $logo-font;
     font-size: 1.8rem;
     padding: 0 3px;
   }
@@ -15,7 +17,7 @@ header {
       padding: 0;
 
       li {
-        font-family: 'Chivo', sans-serif;
+        font-family: $regular-font;
         float: left;
         padding: 0 3px;
 
