@@ -1,6 +1,9 @@
 <header>
   <div class="container">
-    <a [routerLink]="['/']" class="logo">{{ nameLabel }}</a>
+    <div class="logo">
+      <a [routerLink]="['/']">{{ nameLabel }}</a>
+    </div>
+
     <nav>
       <a [routerLink]="['/']">{{ homeLabel }}</a>
       <a [routerLink]="['/about']">{{ aboutLabel }}</a>
