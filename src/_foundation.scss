@@ -1,2 +1,9 @@
-$logo-font: 'Permanent Marker', cursive, sans-serif;
+$marker-font: 'Permanent Marker', cursive, sans-serif;
+$logo-font: 'Allerta Stencil', sans-serif;
 $regular-font: 'Chivo', Helvetica, sans-serif;
+@mixin host-default {
+  display: grid;
+  width: 88%;
+  margin: 0 auto;
+  padding: 1.3em;
+}

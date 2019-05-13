@@ -1,12 +1,10 @@
 <header>
   <div class="container">
-    <a [routerLink]="['/']" class="logo">{{ name }}</a>
+    <a [routerLink]="['/']" class="logo">{{ nameLabel }}</a>
     <nav>
-      <ul>
-        <li><a [routerLink]="['/']">Home</a></li>
-        <li><a [routerLink]="['/about']">About</a></li>
-        <li><a [routerLink]="['/game']">Start New Game</a></li>
-      </ul>
+      <a [routerLink]="['/']">{{ homeLabel }}</a>
+      <a [routerLink]="['/about']">{{ aboutLabel }}</a>
+      <a [routerLink]="['/game']">{{ newGameLabel }}</a>
     </nav>
   </div>
 </header>

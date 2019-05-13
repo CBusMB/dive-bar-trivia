@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NavComponent implements OnInit {
-  name = 'dive bar trivia';
+  nameLabel = 'Dive Bar Trivia';
+  homeLabel = 'Home';
+  aboutLabel = 'About';
+  newGameLabel = 'Start New Game';
   constructor() { }
 
   ngOnInit() {

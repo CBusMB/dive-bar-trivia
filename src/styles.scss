@@ -1,17 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Chivo|Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Chivo|Permanent+Marker|Sirin+Stencil');
 @import 'foundation';
-
-body,
-html {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0;
-  height: 100%;
-}
 
 body {
   background-image: radial-gradient(rgb(209, 207, 207), #333);
   font-family: $regular-font;
+  margin: 0 auto;
+  height: 100vh;
   font-size: 1.1rem;
 }
 
@@ -19,14 +13,37 @@ a {
   text-decoration: none;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 1.3em;
-  display: grid;
-  grid-template-columns: 30% auto;
+.logo {
+  font-family: $logo-font;
+  font-size: 2.2rem;
+  padding: 10px 20px;
+  color: #ffd8d8;
+  text-shadow: 0.1vw 0vw 0.25vw #ffd8d8, 0.2vw 0vw 0.25vw #ffd8d8,
+    0.4vw 0vw 0.25vw #ffd8d8, 0.1vw 0vw 0vw #f25757, 0.2vw 0vw 0vw #f25757,
+    0.4vw 0vw 0vw #f25757, 0.1vw 0vw 0.1vw #f25757, 0.2vw 0vw 0.1vw #f25757,
+    0.4vw 0vw 0.1vw #f25757, 0.1vw 0vw 2vw #f25757, 0.2vw 0vw 2vw #f25757,
+    0.4vw 0vw 2vw #f25757, 0.1vw 0vw 1vw #e50b0b, 0.2vw 0vw 1vw #e50b0b,
+    0.4vw 0vw 5vw #e50b0b, 0.1vw 0vw 5vw #e50b0b, 0.2vw 0vw 20vw #e50b0b,
+    0.4vw 0vw 10vw #e50b0b, 0.1vw 0vw 10vw #e50b0b, 0.2vw 0vw 30vw #e50b0b,
+    0.4vw 0vw 10vw #e50b0b;
 
-  a {
-    color: rgb(240, 230, 230);
+  background-image: url('./assets/img/brick.jpg');
+  border-radius: 10px;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  animation-name: opacity;
+  animation-duration: 0.35s;
+  animation-iteration-count: 3;
+  animation-timing-function: linear;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.2;
   }
 }

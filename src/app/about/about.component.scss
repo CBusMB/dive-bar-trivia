@@ -1,5 +1,9 @@
 @import '~src/foundation';
 
+:host {
+  @include host-default();
+}
+
 span {
   font-family: $logo-font;
 }
