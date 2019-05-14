@@ -8,7 +8,9 @@ import { NavComponent } from './nav/nav.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
-import { FetchService } from './fetch.service';
+import { FetchService } from '../services/fetch.service';
+import { GameBuilderService } from '../services/game-builder.service';
+import { SessionTokenDataService } from '../services/session-token-data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { FetchService } from './fetch.service';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [FetchService],
+  providers: [FetchService, GameBuilderService, SessionTokenDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

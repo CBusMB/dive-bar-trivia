@@ -1,4 +1,90 @@
 @import '~src/foundation';
+$card-height: 200px;
+
 :host {
   @include host-default();
+  grid-gap: 20px;
+  grid-template:
+    ' category-card category-card '
+    ' level-card question-card '
+    / 2fr 1fr;
+  place-items: center;
+}
+
+.category-card {
+  grid-area: category-card;
+  display: grid;
+  place-items: center;
+
+  ul {
+    columns: 2;
+    list-style: none;
+    padding: 5px;
+  }
+
+  h1 {
+    font-family: $marker-font;
+    color: #fff;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-family: $regular-font;
+    font-size: 1.2rem;
+    color: $trivia-blue-color;
+    cursor: pointer;
+  }
+}
+
+.level-card {
+  grid-area: level-card;
+  display: grid;
+  place-items: center;
+  height: $card-height;
+
+  ul {
+    list-style: none;
+    padding: 5px;
+  }
+
+  h1 {
+    font-family: $marker-font;
+    color: #fff;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-family: $regular-font;
+    font-size: 1.2rem;
+    color: $trivia-blue-color;
+    cursor: pointer;
+  }
+}
+
+.question-card {
+  grid-area: question-card;
+  display: grid;
+  place-items: center;
+  height: $card-height;
+
+  ul {
+    list-style: none;
+    padding: 5px;
+  }
+
+  h1 {
+    font-family: $marker-font;
+    color: #fff;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-family: $regular-font;
+    font-size: 1.2rem;
+    color: $trivia-blue-color;
+    cursor: pointer;
+  }
 }

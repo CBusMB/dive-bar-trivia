@@ -20,7 +20,6 @@ a {
 
   background-image: url('./assets/img/brick.jpg');
   border-radius: 10px;
-
   a {
     color: #ffd8d8;
   }
@@ -36,6 +35,13 @@ a {
   animation-duration: 0.42s;
   animation-iteration-count: 3;
   animation-timing-function: linear;
+}
+
+.card {
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba($color: #101010, $alpha: 0.5);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.59);
 }
 
 @keyframes flicker {

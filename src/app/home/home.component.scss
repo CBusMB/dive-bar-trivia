@@ -5,7 +5,7 @@
   grid-template:
     ' container container '
     ' category-card quickstart-card '
-    / 1fr 1fr;
+    / 2fr 1fr;
   place-items: center;
 }
 
@@ -21,20 +21,15 @@ h1 {
   color: #fff;
 }
 
-.card {
-  width: auto;
-  border-radius: 10px;
-  background-color: rgba($color: #101010, $alpha: 0.5);
-}
-
 .category-card {
   grid-area: category-card;
   display: grid;
   place-items: center;
 
   ul {
+    columns: 2;
     list-style: none;
-    padding: 10px;
+    padding: 5px;
   }
 
   h1 {
@@ -47,7 +42,7 @@ h1 {
     border: none;
     background: transparent;
     font-family: $regular-font;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: $trivia-blue-color;
     cursor: pointer;
   }

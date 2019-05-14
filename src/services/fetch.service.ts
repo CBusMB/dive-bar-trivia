@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { TriviaCategory } from './trivia-category';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { SessionToken } from './session-token';
-import { TriviaCategoryCollection } from './trivia-category-collection';
+import { SessionToken } from '../models/session-token';
+import { TriviaCategory } from 'src/models/trivia-category';
+import { TriviaCategoryCollection } from 'src/models/trivia-category-collection';
 
 const categoriesUrl = 'https://opentdb.com/api_category.php';
 const tokenRequestUrl = 'https://opentdb.com/api_token.php?command=request';

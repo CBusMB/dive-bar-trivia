@@ -1,3 +1,26 @@
-<p>
-  game works!
-</p>
+<div class="card category-card">
+  <h1>Categories</h1>
+  <ul>
+    <li *ngFor="let category of categories">
+      <button>{{ category.name }}</button>
+    </li>
+  </ul>
+</div>
+
+<div class="card level-card">
+  <h1>Difficulty Level</h1>
+  <ul>
+    <li *ngFor="let level of levels">
+      <button>{{ level }}</button>
+    </li>
+  </ul>
+</div>
+
+<div class="card question-card">
+  <h1>Question Type</h1>
+  <ul>
+    <li *ngFor="let question of questionTypes">
+      <button>{{ question }}</button>
+    </li>
+  </ul>
+</div>
