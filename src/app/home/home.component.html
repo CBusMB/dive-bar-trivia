@@ -1,3 +1,18 @@
-<p>
-  home works!
-</p>
+<div class="logo-container">
+  <h1 class="logo">Dive Bar Trivia</h1>
+</div>
+
+<div class="card category-card">
+  <h1>Categories</h1>
+  <ul>
+    <li *ngFor="let category of categories">
+      <button (click)="onCategoryClick(category)">{{ category.name }}</button>
+    </li>
+  </ul>
+</div>
+<div class="card quickstart-card">
+  <h1>
+    Select a category for a quick game, or select <br />
+    'Start New Game' on the nav bar for more options.
+  </h1>
+</div>

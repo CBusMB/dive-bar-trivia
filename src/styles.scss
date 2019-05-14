@@ -17,18 +17,18 @@ a {
   font-family: $logo-font;
   font-size: 2.2rem;
   padding: 10px 20px;
-  text-shadow: $logo-shadow;
 
   background-image: url('./assets/img/brick.jpg');
   border-radius: 10px;
-  transition: opacity 0.2s;
 
-  a,
-  h1,
-  h2,
-  h3 {
+  a {
     color: #ffd8d8;
   }
+}
+
+.shadow-logo {
+  color: #ffd8d8;
+  text-shadow: $logo-shadow;
 }
 
 .logo > a:hover {

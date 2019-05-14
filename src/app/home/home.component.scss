@@ -1,4 +1,64 @@
 @import '~src/foundation';
 :host {
   @include host-default();
+  grid-gap: 20px;
+  grid-template:
+    ' container container '
+    ' category-card quickstart-card '
+    / 1fr 1fr;
+  place-items: center;
+}
+
+.logo-container {
+  grid-area: container;
+  width: 100%;
+  background-image: url('../../assets/img/brick.jpg');
+}
+
+h1 {
+  float: right;
+  font-family: $marker-font;
+  color: #fff;
+}
+
+.card {
+  width: auto;
+  border-radius: 10px;
+  background-color: rgba($color: #101010, $alpha: 0.5);
+}
+
+.category-card {
+  grid-area: category-card;
+  display: grid;
+  place-items: center;
+
+  ul {
+    list-style: none;
+    padding: 10px;
+  }
+
+  h1 {
+    float: right;
+    font-family: $marker-font;
+    color: #fff;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: $trivia-blue-color;
+    cursor: pointer;
+  }
+}
+
+.quickstart-card {
+  grid-area: quickstart-card;
+
+  h1 {
+    font-family: $regular-font;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
 }

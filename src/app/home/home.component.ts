@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchService } from '../fetch.service';
+import { TriviaCategory } from '../trivia-category';
+import { TriviaCategoryCollection } from '../trivia-category-collection';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private fetchService: FetchService) { }
+  categories: TriviaCategory[] = [];
   ngOnInit() {
+    this.fetchCategories();
   }
 
+  fetchCategories() {
+    const categoryKey = 'trivia_categories';
+    const nameKey = 'name';
+    this.fetchService.getCategoryList().subscribe((data: TriviaCategoryCollection) => {
+      const collection: TriviaCategory[] = data[categoryKey];
+      collection.forEach(d => {
+        this.categories.push(d);
+      });
+    });
+  }
+
+  onCategoryClick(category: string) {
+    console.log(category);
+  }
 }
