@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   fetchCategories() {
     const categoryKey = 'trivia_categories';
-    const nameKey = 'name';
     this.fetchService.getCategoryList().subscribe((data: TriviaCategoryCollection) => {
       const collection: TriviaCategory[] = data[categoryKey];
       collection.forEach(d => {
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onCategoryClick(category: string) {
+  onCategoryClick(category: TriviaCategory) {
     console.log(category);
   }
 }
