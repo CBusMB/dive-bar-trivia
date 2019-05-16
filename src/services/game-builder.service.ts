@@ -6,12 +6,16 @@ import { QuestionType } from 'src/models/question-type.enum';
 import { TriviaCategoryCollection } from 'src/models/trivia-category-collection';
 import { TriviaCategory } from 'src/models/trivia-category';
 import { FetchService } from './fetch.service';
+import { ApiGeneratorService } from './api-generator.service';
+import { TriviaQuestion } from 'src/models/trivia-question';
+import { GameResponse } from 'src/models/game-response';
+import { GameQuestion } from 'src/models/game-question';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameBuilderService {
-  private defaultOptions: GameOptions = {
+  private gameOptions: GameOptions = {
     difficulty: DifficultyLevel.Easy,
     questionType: QuestionType.Both,
     category: { id: 9, name: 'General Knowledge' },
@@ -19,7 +23,15 @@ export class GameBuilderService {
     questionCount: 10
   };
 
+  private potpourri: TriviaCategory = {
+    id: 0,
+    name: 'Potpourri (All)'
+  };
+  triviaQuestions: TriviaQuestion[] = [];
+  gameQuestions: GameQuestion[] = [];
+
   private categories: TriviaCategory[] = [
+    this.potpourri,
     { id: 9, name: 'General Knowledge' },
     { id: 10, name: 'Entertainment: Books' },
     { id: 11, name: 'Entertainment: Film' },
@@ -46,21 +58,39 @@ export class GameBuilderService {
     { id: 32, name: 'Entertainment: Cartoon & Animations' }
   ];
 
-  private potpourri: TriviaCategory = {
-    id: 0,
-    name: 'Potpourri (All)'
-  };
-
-  private gameSource = new BehaviorSubject<GameOptions>(this.defaultOptions);
-  currentOptions = this.gameSource.asObservable();
+  private gameOptionsSource = new BehaviorSubject<GameOptions>(this.gameOptions);
+  currentOptions = this.gameOptionsSource.asObservable();
 
   private categorySource = new BehaviorSubject<TriviaCategory[]>(this.categories);
   currentCategories = this.categorySource.asObservable();
 
-  constructor(private fetchService: FetchService) { }
+  private gameQuestionsSource = new BehaviorSubject<GameQuestion[]>(this.gameQuestions);
+  currentGameQuestions = this.gameQuestionsSource.asObservable();
+
+  constructor(private fetchService: FetchService, private apiGenerator: ApiGeneratorService) { }
+  levels = [
+    'Easy',
+    'Medium',
+    'Hard',
+    'Any Level'
+  ];
+
+  questionTypes = [
+    'Multiple Choice',
+    'True / False',
+    'All'
+  ];
+
+  numberOfQuestions = [
+    5,
+    10,
+    15,
+    20
+  ];
+
 
   changeOptions(options: GameOptions) {
-    this.gameSource.next(options);
+    this.gameOptionsSource.next(options);
   }
 
   updateCategories(categories: TriviaCategory[]) {
@@ -74,7 +104,19 @@ export class GameBuilderService {
     const categoryKey = 'trivia_categories';
     this.fetchService.getCategoryList().subscribe((data: TriviaCategoryCollection) => {
       this.categories = data[categoryKey];
+      if (!this.categories.includes(this.potpourri)) {
+        this.categories.push(this.potpourri);
+      }
     });
-    // this.gameBuilder.updateCategories({ trivia_categories: this.categories });
+  }
+
+  buildGame() {
+    this.currentOptions.subscribe(o => this.gameOptions = o);
+    const query = this.apiGenerator.generateApi(this.gameOptions);
+    this.fetchService.getGameQuestionsForQuery(query).subscribe((response: GameResponse) => this.triviaQuestions = response.results);
+    this.triviaQuestions.forEach((q: TriviaQuestion) => {
+      const gq = new GameQuestion(q.category, q.type, q.question, q.difficulty, q.correct_answer, q.incorrect_answers);
+      this.gameQuestions.push(gq);
+    });
   }
 }

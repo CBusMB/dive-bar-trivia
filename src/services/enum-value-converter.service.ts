@@ -6,25 +6,25 @@ import { QuestionType } from 'src/models/question-type.enum';
   providedIn: 'root'
 })
 export class EnumValueConverterService {
+  private levelMap = {
+    Easy: DifficultyLevel.Easy,
+    Medium: DifficultyLevel.Medium,
+    Hard: DifficultyLevel.Hard,
+    'Any Level': DifficultyLevel.Any
+  };
+
+  private typeMap = {
+    'Multiple Choice': QuestionType.MultipleChoice,
+    'True / False': QuestionType.TrueFalse,
+    All: QuestionType.Both
+  };
 
   constructor() { }
   convertToDifficultyLevel(level: string): DifficultyLevel {
-    if (level === DifficultyLevel.Easy) {
-      return DifficultyLevel.Easy;
-    } else if (level === DifficultyLevel.Medium) {
-      return DifficultyLevel.Medium;
-    } else {
-      return DifficultyLevel.Hard;
-    }
+    return this.levelMap[level];
   }
 
   convertToQuestionType(questionType: string): QuestionType {
-    if (questionType === QuestionType.TrueFalse) {
-      return QuestionType.TrueFalse;
-    } else if (questionType === QuestionType.MultipleChoice) {
-      return QuestionType.MultipleChoice;
-    } else {
-      return QuestionType.Both;
-    }
+    return this.typeMap[questionType];
   }
 }

@@ -13,29 +13,16 @@ import { FetchService } from 'src/services/fetch.service';
 export class GameComponent implements OnInit {
   categories: TriviaCategory[] = [];
   gameOptions: GameOptions;
-  levels = [
-    'Easy',
-    'Medium',
-    'Hard',
-    'Any Level'
-  ];
-
-  questionTypes = [
-    'Multiple Choice',
-    'True / False',
-    'All'
-  ];
-
-  numberOfQuestions = [
-    5,
-    10,
-    15,
-    20
-  ];
+  levels = [];
+  questionTypes = [];
+  numberOfQuestions = [];
 
   constructor(private gameBuilder: GameBuilderService, private converter: EnumValueConverterService, private fetchService: FetchService) { }
 
   ngOnInit() {
+    this.levels = this.gameBuilder.levels;
+    this.questionTypes = this.gameBuilder.questionTypes;
+    this.numberOfQuestions = this.gameBuilder.numberOfQuestions;
     this.gameBuilder.currentOptions.subscribe(game => this.gameOptions = game);
     this.gameBuilder.currentCategories.subscribe((cat) => {
       this.categories = cat;
@@ -67,5 +54,6 @@ export class GameComponent implements OnInit {
 
   onStartButtonClick() {
     setTimeout(() => this.updateOptions(), 300);
+    this.gameBuilder.buildGame();
   }
 }
