@@ -1,0 +1,52 @@
+@import '~src/foundation';
+:host {
+  @include host-default();
+  grid-gap: 20px;
+  grid-template:
+    ' screen controller '
+    / 3fr 1fr;
+  place-items: center;
+}
+
+.screen {
+  grid-area: screen;
+  border: 8px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0.3rem rgba(46, 26, 26, 0.6);
+  background-color: black;
+  font-family: $play-font;
+  font-size: 1.6rem;
+  color: #f0f0f0;
+  cursor: $play-auto-cursor;
+  padding: 16px;
+}
+
+.controller {
+  grid-area: controller;
+  cursor: $play-auto-cursor;
+}
+
+.game-button {
+  font-family: $play-font;
+  font-size: 2rem;
+  text-shadow: 1px 1px pink, -1px -1px maroon;
+  line-height: 1.5em;
+  text-align: center;
+  display: inline-block;
+  width: 1.5em;
+  border-radius: 0.75em;
+  background-color: red;
+  box-shadow: 0 0.2em maroon;
+  color: red;
+  margin: 5px;
+  background-color: red;
+  background-image: linear-gradient(to right top, pink 3%, red 22%, maroon 99%);
+  cursor: $play-pointer-cursor;
+  padding-left: 5px;
+}
+
+.game-button:active {
+  box-shadow: none;
+  position: relative;
+  top: 0.2em;
+}

@@ -6,7 +6,9 @@
   <h1>Categories</h1>
   <ul>
     <li *ngFor="let category of categories">
-      <button (click)="onCategoryClick(category)">{{ category.name }}</button>
+      <a [routerLink]="['/game-view']" (click)="onCategoryClick(category)">{{
+        category.name
+      }}</a>
     </li>
   </ul>
 </div>

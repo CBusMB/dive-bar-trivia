@@ -25,6 +25,7 @@ h1 {
   grid-area: category-card;
   display: grid;
   place-items: center;
+  cursor: $play-auto-cursor;
 
   ul {
     columns: 2;
@@ -34,17 +35,15 @@ h1 {
 
   h1 {
     float: right;
-    font-family: $marker-font;
+    font-family: $play-font;
     color: #fff;
   }
 
-  button {
-    border: none;
-    background: transparent;
-    font-family: $regular-font;
-    font-size: 1.2rem;
+  a {
+    font-family: $play-font;
+    font-size: 0.8rem;
     color: $trivia-blue-color;
-    cursor: pointer;
+    cursor: $play-pointer-cursor;
   }
 }
 

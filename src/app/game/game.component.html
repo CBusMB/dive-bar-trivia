@@ -1,8 +1,38 @@
+<a
+  [routerLink]="['/game-view']"
+  (click)="onStartButtonClick()"
+  class="start-btn"
+  >START</a
+>
+
 <div class="card category-card">
   <h1>Categories</h1>
+  <div *ngFor="let category of categories" class="radio-container">
+    <input
+      type="radio"
+      name="category"
+      id="c-option"
+      class="option-input radio"
+      (click)="onCategorySelected(category)"
+    />
+    <label for="c-option">{{ category.name }}</label>
+  </div>
+</div>
+
+<div class="card number-card">
+  <h1>Number Of Questions</h1>
   <ul>
-    <li *ngFor="let category of categories">
-      <button>{{ category.name }}</button>
+    <li *ngFor="let quantity of numberOfQuestions">
+      <div class="radio-container">
+        <input
+          type="radio"
+          name="number"
+          id="q-option"
+          class="option-input radio"
+          (click)="onQuestionCountSelected(quantity)"
+        />
+        <label for="q-option">{{ quantity }}</label>
+      </div>
     </li>
   </ul>
 </div>
@@ -11,7 +41,16 @@
   <h1>Difficulty Level</h1>
   <ul>
     <li *ngFor="let level of levels">
-      <button>{{ level }}</button>
+      <div class="radio-container">
+        <input
+          type="radio"
+          name="level"
+          id="l-option"
+          class="option-input radio"
+          (click)="onLevelSelected(level)"
+        />
+        <label for="l-option">{{ level }}</label>
+      </div>
     </li>
   </ul>
 </div>
@@ -20,7 +59,16 @@
   <h1>Question Type</h1>
   <ul>
     <li *ngFor="let question of questionTypes">
-      <button>{{ question }}</button>
+      <div class="radio-container">
+        <input
+          type="radio"
+          name="question"
+          id="q-option"
+          class="option-input radio"
+          (click)="onQuestionTypeSelected(question)"
+        />
+        <label for="q-option">{{ question }}</label>
+      </div>
     </li>
   </ul>
 </div>

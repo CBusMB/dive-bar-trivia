@@ -1,90 +1,166 @@
 @import '~src/foundation';
-$card-height: 200px;
+$card-height: 420px;
 
 :host {
   @include host-default();
   grid-gap: 20px;
   grid-template:
-    ' category-card category-card '
-    ' level-card question-card '
-    / 2fr 1fr;
+    ' . start-btn .'
+    ' category-card category-card category-card'
+    ' number-card level-card question-card '
+    / 1fr 1fr 1fr;
   place-items: center;
+}
+
+.option-input {
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+  cursor: $play-pointer-cursor;
+}
+
+.option-input:checked {
+  background: #40e0d0;
+}
+
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  font-family: $play-font;
+  content: 'X';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.option-input:checked::after {
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+.option-input.radio {
+  border-radius: 50%;
+}
+
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+label {
+  display: block;
+  line-height: 35px;
+  font-family: $play-font;
+  font-size: 0.8rem;
+  color: $trivia-blue-color;
+  line-break: loose;
+  cursor: $play-auto-cursor;
+}
+
+h1 {
+  margin: 0 auto;
+  font-family: $play-font;
+  font-size: 1rem;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
 }
 
 .category-card {
   grid-area: category-card;
   display: grid;
-  place-items: center;
-
-  ul {
-    columns: 2;
-    list-style: none;
-    padding: 5px;
-  }
-
-  h1 {
-    font-family: $marker-font;
-    color: #fff;
-  }
-
-  button {
-    border: none;
-    background: transparent;
-    font-family: $regular-font;
-    font-size: 1.2rem;
-    color: $trivia-blue-color;
-    cursor: pointer;
-  }
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  cursor: $play-auto-cursor;
 }
 
 .level-card {
   grid-area: level-card;
   display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
   place-items: center;
   height: $card-height;
-
-  ul {
-    list-style: none;
-    padding: 5px;
-  }
-
-  h1 {
-    font-family: $marker-font;
-    color: #fff;
-  }
-
-  button {
-    border: none;
-    background: transparent;
-    font-family: $regular-font;
-    font-size: 1.2rem;
-    color: $trivia-blue-color;
-    cursor: pointer;
-  }
+  cursor: $play-auto-cursor;
 }
 
 .question-card {
   grid-area: question-card;
   display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
   place-items: center;
   height: $card-height;
+  cursor: $play-auto-cursor;
+}
 
-  ul {
-    list-style: none;
-    padding: 5px;
-  }
+.number-card {
+  grid-area: number-card;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
+  place-items: center;
+  height: $card-height;
+  cursor: $play-auto-cursor;
+}
 
-  h1 {
-    font-family: $marker-font;
-    color: #fff;
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
   }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
 
-  button {
-    border: none;
-    background: transparent;
-    font-family: $regular-font;
-    font-size: 1.2rem;
-    color: $trivia-blue-color;
-    cursor: pointer;
-  }
+.start-btn {
+  grid-area: start-btn;
+  text-align: center;
+  font-size: 30pt;
+  font-family: 'Press Start 2p';
+  display: inline-block;
+  margin: 5px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px;
+  background-color: lightgray;
+  text-shadow: -1px -1px black, 1px 1px white;
+  color: gray;
+  border-radius: 7px;
+  box-shadow: 0 0.2em gray;
+  cursor: pointer;
+}
+
+.start-btn:active {
+  box-shadow: none;
+  position: relative;
+  top: 0.2em;
 }
